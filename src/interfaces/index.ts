@@ -5,8 +5,8 @@ export interface ICommentary {
   description: string,
   pokemonName: string,
   pokemonImage?: string,
-  createdAt?: string,
-  updatedAt?: string,
+  createdAt?: Date,
+  updatedAt?: Date,
 }
 
 export interface ICommentaryService {
