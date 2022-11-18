@@ -13,9 +13,9 @@ export default class CommentaryModel implements ICommentaryModel {
   }
 
   async get(queryData: IQueryData): Promise<ICommentary[]> {
-    console.log(queryData)
     const commentaries = this.prisma.commentary.findMany({
-      skip: queryData.page * 2,
+      take: queryData.limit,
+      skip: queryData.page,
       where: { pokemonName: { contains: queryData.pokemonName }}
     });
 

@@ -20,5 +20,6 @@ export interface ICommentaryModel {
 
 export interface IQueryData {
   pokemonName: string,
-  page: number
+  page: number | undefined,
+  limit: number | undefined
 }

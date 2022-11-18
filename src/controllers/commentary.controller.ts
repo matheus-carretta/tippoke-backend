@@ -17,7 +17,8 @@ export default class CommentaryController {
 
     const queryData = {
       pokemonName: !pokemonName ? '' : pokemonName,
-      page: !page ? 0 : Number(page)
+      page: !page ? undefined : Number(page) * 2,
+      limit: !page ? undefined : 2
     }
 
     const commentary = await this.model.get(queryData as IQueryData);
