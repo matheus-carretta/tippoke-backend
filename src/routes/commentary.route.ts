@@ -13,4 +13,8 @@ route.post('/', (req, res) => {
   commentaryController.add(req, res);
 });
 
+route.get('/', (req, res) => {
+  commentaryController.get(req, res);
+})
+
 export { route };

@@ -10,4 +10,10 @@ export default class CommentaryService implements ICommentaryService {
 
     return newCommentary;
   }
+
+  async get(): Promise<ICommentary[]> {
+    const commentaries = await this.model.get();
+
+    return commentaries;
+  }
 }

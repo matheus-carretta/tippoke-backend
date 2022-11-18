@@ -11,4 +11,10 @@ export default class CommentaryModel implements ICommentaryModel {
 
     return newCommentary;
   }
+
+  async get(): Promise<ICommentary[]> {
+    const commentaries = this.prisma.commentary.findMany();
+
+    return commentaries;
+  }
 }

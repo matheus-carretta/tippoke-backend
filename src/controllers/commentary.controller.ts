@@ -11,4 +11,10 @@ export default class CommentaryController {
 
     return res.status(200).json(commentary) as unknown as ICommentary;
   }
+
+  async get(req: Request, res: Response): Promise<ICommentary[]> {
+    const commentary = await this.model.get();
+
+    return res.status(200).json(commentary) as unknown as ICommentary[];
+  }
 }
