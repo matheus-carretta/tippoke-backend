@@ -9,3 +9,13 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Commentary {
+  id    Int     @default(autoincrement()) @id
+  username  String
+  email String
+  description String
+  pokemonName String
+  pokemonImage String
+  createdAt DateTime @default(now())
+}
