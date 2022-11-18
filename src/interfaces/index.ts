@@ -10,10 +10,15 @@ export interface ICommentary {
 
 export interface ICommentaryService {
   add(commentary: ICommentary): Promise<ICommentary>,
-  get(): Promise<ICommentary[]>
+  get(queryData: IQueryData): Promise<ICommentary[]>
 }
 
 export interface ICommentaryModel {
   add(commentary: ICommentary): Promise<ICommentary>,
-  get(): Promise<ICommentary[]>
+  get(queryData: IQueryData): Promise<ICommentary[]>
+}
+
+export interface IQueryData {
+  pokemonName: string,
+  page: number
 }

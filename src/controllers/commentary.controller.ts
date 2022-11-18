@@ -1,4 +1,4 @@
-import { ICommentary, ICommentaryService } from "../interfaces";
+import { ICommentary, ICommentaryService, IQueryData } from "../interfaces";
 import { Request, Response } from 'express';
 
 export default class CommentaryController {
@@ -13,7 +13,14 @@ export default class CommentaryController {
   }
 
   async get(req: Request, res: Response): Promise<ICommentary[]> {
-    const commentary = await this.model.get();
+    const { pokemonName, page } = req.query;
+
+    const queryData = {
+      pokemonName: !pokemonName ? '' : pokemonName,
+      page: !page ? 0 : Number(page)
+    }
+
+    const commentary = await this.model.get(queryData as IQueryData);
 
     return res.status(200).json(commentary) as unknown as ICommentary[];
   }

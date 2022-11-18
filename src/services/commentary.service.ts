@@ -1,4 +1,4 @@
-import { ICommentary, ICommentaryModel, ICommentaryService } from "../interfaces";
+import { ICommentary, ICommentaryModel, ICommentaryService, IQueryData } from "../interfaces";
 import getPokemonImage from "../utils/fetchPokemonImage";
 
 export default class CommentaryService implements ICommentaryService {
@@ -18,8 +18,8 @@ export default class CommentaryService implements ICommentaryService {
     return newCommentary;
   }
 
-  async get(): Promise<ICommentary[]> {
-    const commentaries = await this.model.get();
+  async get(queryData: IQueryData): Promise<ICommentary[]> {
+    const commentaries = await this.model.get(queryData);
 
     return commentaries;
   }

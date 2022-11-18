@@ -1,5 +1,5 @@
 import { PrismaClient, Prisma } from '@prisma/client';
-import { ICommentary, ICommentaryModel } from "../interfaces";
+import { ICommentary, ICommentaryModel, IQueryData } from "../interfaces";
 
 export default class CommentaryModel implements ICommentaryModel {
   prisma = new PrismaClient();
@@ -12,8 +12,12 @@ export default class CommentaryModel implements ICommentaryModel {
     return newCommentary;
   }
 
-  async get(): Promise<ICommentary[]> {
-    const commentaries = this.prisma.commentary.findMany();
+  async get(queryData: IQueryData): Promise<ICommentary[]> {
+    console.log(queryData)
+    const commentaries = this.prisma.commentary.findMany({
+      skip: queryData.page * 2,
+      where: { pokemonName: { contains: queryData.pokemonName }}
+    });
 
     return commentaries;
   }
