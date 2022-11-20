@@ -9,7 +9,7 @@ export default class CommentaryController {
   async add(req: Request & { body: ICommentary }, res: Response): Promise<ICommentary> {
     const commentary = await this.model.add({ ...req.body });
 
-    return res.status(200).json(commentary) as unknown as ICommentary;
+    return res.status(201).json(commentary) as unknown as ICommentary;
   }
 
   async get(req: Request, res: Response): Promise<ICommentary[]> {
