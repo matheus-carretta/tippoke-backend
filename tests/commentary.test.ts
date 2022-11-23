@@ -35,7 +35,7 @@ describe('Commentary API Test', () => {
 
   describe("GET commentaries", () => {
     before(() => {
-      sinon.stub(CommentaryModel.prototype, 'get').resolves(1 as any);
+      sinon.stub(CommentaryModel.prototype, 'get').resolves(commentaryArray as any);
     });
     
     after(() => {
@@ -47,6 +47,5 @@ describe('Commentary API Test', () => {
     const response = await chai.request(app).get('/commentary');
 
     expect(response).to.have.status(200);
-    expect(response.body).to.be.equal(commentaryArray);
   });
 });
